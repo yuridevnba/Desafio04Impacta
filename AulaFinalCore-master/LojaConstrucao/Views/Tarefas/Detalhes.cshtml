@@ -1,0 +1,30 @@
+﻿@* 
+@model Cliente
+
+
+<h1>Detalhes do Cliente</h1>
+
+Id: @Model.ClienteId<br />
+Nome CLiente: @Model.NomeCliente<br />
+
+ *@
+ @model Tarefas
+
+
+<h1>Detalhes da Tarefa</h1>
+
+Id: @Model.TarefasId
+<br />
+Nome CLiente: @Model.NomeTarefa
+<br />
+
+Descrição Tarefa: @Model.descricao
+<br />
+
+Data de Criação: @Model.dataInicio
+<br />
+
+Status: @Model.Status
+<br />
+
+<a asp-action="Delete" asp-route-id="@Model.TarefasId" class="btn btn-sm btn-danger">Deletar Registro</a>

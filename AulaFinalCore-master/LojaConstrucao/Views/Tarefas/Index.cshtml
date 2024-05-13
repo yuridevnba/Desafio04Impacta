@@ -1,0 +1,118 @@
+﻿<div class="container-fluid">
+    <div class="row">
+
+       
+        <nav class="col-md-3 col-lg-2 bg-light sidebar">
+           
+
+            <nav id="navbar-example2" style="width: 22px; position: absolute; top: 21px; right:86%; margin-bottom2px;" class="navbar bg-body-tertiary px-1 mb-3">
+                <a class="navbar-brand" href="#"> </a>
+                <ul class="nav nav-pills">
+                   
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"> <img class="editar-icon" id="Imagem-Progresso" src="~/user.png" alt="Minha Imagem" style="width: 22px; position: relative; top: 0px; ;"></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#scrollspyHeading3">Login</a></li>
+                            <li><a class="dropdown-item" href="#scrollspyHeading4">Configuração</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#scrollspyHeading5">Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Conteúdo da barra de navegação -->
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link navLegal" asp-area="" asp-controller="Tarefas" asp-action="Index">Tarefas por Fazer </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navLegall" asp-area="" asp-controller="Tarefas" asp-action="Concluidas">Concluidas</a>
+                </li>
+               
+            </ul>
+        </nav>
+
+        <!-- Conteúdo principal -->
+        <main role="main" class="col-md-8 ml-sm-auto col-lg-09 content">
+            <!-- Conteúdo da página -->
+            <div class="row justify-content-center">
+            <h2 id="todolist">Lista de Tarefas</h2>
+
+                <p>
+                    <button type="button" class="btn btn-outline-primary clicadoooo"> <img src="~/add.png" alt="Minha Imagem" style="width: 30px;"></button>
+                        
+                <div class="col-md-6">
+                   
+                    @foreach (var tarefa in Model)
+                    {
+                            @if (tarefa.NomeTarefa != "Nome")
+                            {
+                                <div class="card mb-4">
+                                    <div class="card-body" style="box-shadow: 4px 2px 4px 2px rgba(200, 200, 200, 0.5);">
+
+                                        <a href="@Url.Action("Mudança", new { id = tarefa.TarefasId }) ">
+                                            <img class="editar-icon" id="Imagem-Progresso" src="~/check.png" alt="Minha Imagem" style="width: 12px; position: absolute; top: 4px; right:94% ;">
+                                        </a>
+                                        <h5 class="card-title" style="margin-top:2%">@tarefa.NomeTarefa</h5>
+
+                                        <p class="card-text">@tarefa.descricao</p>
+                                        <p class="card-text">@tarefa.dataInicio</p>
+
+                                        <img id="Imagem-Progresso" src="progresso.png" alt="Minha Imagem" style="width: 42px; position: static; top: -6%; right:89% ;">
+                                        @* <a href="@Url.Action("Detalhes", new { id = tarefa.TarefasId })" class="btn btn-primary">Detalhes</a> *@
+
+                                        <a href="@Url.Action("Edit", new { id = tarefa.TarefasId }) ">
+                                            <img class="editar-icon" src="~/editar-texto.png" alt="Deletar" style="width: 12px; position: absolute; top: 4px; right:25px;">
+
+                                        </a>
+                                        <a href="@Url.Action("Delete", new { id = tarefa.TarefasId })">
+                                            <img class="editar-icon" src="~/x.png" alt="Deletar" style="width: 12px; position: absolute; top: 4px; right:4px;">
+                                        </a>
+
+                                    </div>
+                                </div>
+                            }
+
+                            
+                        }
+                </div>
+            </div>
+        </main>
+
+
+        <div id="vtncModal" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Tarefas</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label>Nome Tarefa</label>
+                            <input type="text" class="form-control form-control-sm NomeTarefa" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Descrição da Tarefa</label>
+                            <input type="text" class="form-control form-control-sm Descricao" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btnSalvar">Salvar</button>
+                    </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
